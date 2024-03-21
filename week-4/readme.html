@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Operasi Input Output</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <div align="center">
+  <h1 style="text-align: center;font-weight: bold">Praktikum 4<br>Praktek Sistem Operasi</h1>
+  <h4 style="text-align: center;">Dosen Pengampu : Dr. Ferry Astika Saputra, S.T., M.Sc.</h4>
+</div>
+<br />
+<div align="center">
+  <img src="file:///c:\SysOp-3123500015-main\assets\week-1\logo_pens.png" alt="Logo PENS">
+  <h3 style="text-align: center;">Disusun Oleh :</h3>
+  <p style="text-align: center;">
+    <strong>Calvin Raditya Sandy Winarto (3123500009)</strong><br>
+    <strong>Zada Devi Mariama (3123500015)</strong>
+  </p>
+<h3 style="text-align: center;line-height: 1.5">Politeknik Elektronika Negeri Surabaya<br>Departemen Teknik Informatika Dan Komputer<br>Program Studi Teknik Informatika<br>2024/2025</h3>
+  <hr>
+</div>
+<h1 id="operasi-input-output">Operasi Input Output</h1>
+<p>Referensi : <a href="https://www.geeksforgeeks.org/introduction-linux-shell-shell-scripting/?ref=shm_">Shell Programming</a></p>
+<h2 id="pokok-bahasan">POKOK BAHASAN:</h2>
+<pre><code>* Pipeline
+* Redirection
+</code></pre>
+<h2 id="tujuan-pembelajaran">TUJUAN PEMBELAJARAN:</h2>
+<p>Setelah mempelajari materi dalam bab ini, mahasiswa diharapkan mampu:</p>
+<ul>
+<li>Memahami konsep proses I/O dan redirection</li>
+<li>Memahami standar input, output dan error</li>
+<li>Menggunakan notasi output, append dan here document</li>
+<li>Memahami konsep <em>PIPE</em> dan filter</li>
+</ul>
+<h2 id="dasar-teori">DASAR TEORI:</h2>
+<h3 id="1-proses-io">1. PROSES I/O</h3>
+<p>Sebuah proses memerlukan Input dan Output. Instruksi (command) yang diberikan pada Linux melalui Shell disebut sebagai eksekusi program yang selanjutnya disebut proses. Setiap kali instruksi diberikan, maka Linux kernel akan menciptakan sebuah proses dengan memberikan nomor PID (Process Identity). Proses dalam Linux selalu membutuhkan Input dan menghasilkan suatu Output.</p>
+<pre><code class="language-mermaid">graph LR
+    Input[Input] --&gt; Process[Process] --&gt; Output[Output]
+</code></pre>
+<p>Dalam konteks Linux input/output adalah :</p>
+<ul>
+<li>Keyboard (input)</li>
+<li>Layar (output)</li>
+<li>Files</li>
+<li>Struktur data kernel</li>
+<li>Peralatan I/O lainnya (misalnya Network)</li>
+</ul>
+<h2 id="2-file-descriptor">2. FILE DESCRIPTOR</h2>
+<p>Linux berkomunikasi dengan file melalui file descriptor yang direpresentasikan melalui angka yang dimulai dari 0, 1, 2 dan seterusnya. Tiga buah file descriptor standar yang lalu diciptakan oleh proses adalah :</p>
+<ul>
+<li>0 = keyboard (standar input)</li>
+<li>1 = layar (standar output)</li>
+<li>2 = layar (standar error)</li>
+</ul>
+<p>Linux tidak membedakan antara peralatan hardware dan file. Linux memanipulasi peralatan hardware dengan memperlakukannya sama dengan ketika memperlakukan sebuah file.</p>
+<h2 id="3pembelokan-redirection">3.PEMBELOKAN (REDIRECTION)</h2>
+<p>Pembelokan dilakukan untuk standard input, output dan error, yaitu untuk mengalihkan file descriptor dari 0, 1 dan 2. Simbol untuk pembelokan adalah :</p>
+<pre><code class="language-mermaid">flowchart LR
+    A(Standart Input) --&gt;|Keyboard| B{Process}
+    B --&gt;|Monitor| C[Standart Output]
+    B --&gt;|Monitor| D[Standart Error]
+</code></pre>
+<h2 id="4-pipa-pipeline">4. PIPA (PIPELINE)</h2>
+<p>Mekanisme pipa digunakan sebagai alat komunikasi antar proses.</p>
+<pre><code class="language-mermaid">graph LR
+  A(Input) --&gt; B(Proses-1) --&gt; C(Output) --&gt; D(Input) --&gt; E(Proses-2) --&gt; F(Output)
+</code></pre>
+<p>Proses-1 menghasilkan output yang selanjutnya digunakan sebagai input oleh Proses-2. Hubungan output input ini dinamakan <code>pipa ataiupipelining</code>, yang menghubungkan Proses-1 dengan Proses-2 dan dinyatakan dengan symbol “|”.</p>
+<pre><code>    Proses1 | Proses
+</code></pre>
+<h2 id="5-filter">5. FILTER</h2>
+<p>Filter adalah utilitas Linux yang dapat memproses standard input (dari keyboard) dan menampilkan hasilnya pada standard output (layar). Contoh filter adalah cat, sort, grep, pr, head, tail, paste dan lainnya.
+Pada sebuah rangkaian pipa :</p>
+<pre><code>    P&lt;sub&gt;1&lt;/sub&gt; | P&lt;sub&gt;2&lt;/sub&gt; | P&lt;sub&gt;3&lt;/sub&gt; ... | P&lt;sub&gt;n-1&lt;/sub&gt; | P&lt;sub&gt;n&lt;/sub&gt;
+</code></pre>
+<p>Maka P2 sampai dengan P<sub>n-1</sub> berfungsi sebagai filter. P1 (awal) dan Pn (terakhir) boleh tidak filter. Utilitas yang bukan filter misalnya who, ls, ps, lp, lpr, mail dan lainnya.
+Beberapa perintah Linux yang digunakan untuk proses penyaringan antara lain :</p>
+<ul>
+<li>Perintah <code>grep</code>
+Digunakan untuk menyaring masukannya dan menampilkan baris-baris yang hanya mengandung pola yang ditentukan. Pola ini disebut regular expression.</li>
+<li>Perintah <code>wc</code>
+Digunakan untuk menghitung jumlah baris, kata dan karakter dari baris-baris masukan yang diberikan kepadanya. Untuk mengetahui berapa baris gunakan option –l, untuk mengetahui berapa kata, gunakan option –w dan untuk mengetahui berapa karakter, gunakan option –c.
+Jika salah satu option tidak digunakan, maka tampilannya adalah jumlah baris, jumlah kata dan jumlah karakter.</li>
+<li>Perintah <code>sort</code>
+Digunakan untuk mengurutkan masukannya berdasarkan urutan nomor ASCII dari karakter.</li>
+<li>Perintah <code>cut</code>
+Digunakan untuk mengambil kolom tertentu dari baris-baris masukannya, yang ditentukan pada option –c.</li>
+<li>Perintah <code>uniq</code>
+Digunakan untuk menghilangkan baris-baris berurutan yang mengalami duplikasi, biasanya digabungkan dalam pipeline dengan <code>sort</code>.</li>
+</ul>
+<h2 id="tugas-pendahuluan">TUGAS PENDAHULUAN:</h2>
+<h2 id="jawablah-pertanyaan-pertanyaan-di-bawah-ini-">Jawablah pertanyaan-pertanyaan di bawah ini :</h2>
+<ol>
+<li>Apa yang dimaksud redirection?
+<ul>
+<li>Pembelokan yang dilakukan untuk standar input, output, dan error dan untuk mengalihkan file descriptor dari 0, 1, dan 2.</li>
+</ul>
+</li>
+<li>Apa yang dimaksud pipeline?
+<ul>
+<li>Suatu mekanisme pipa yang digunakan sebagai alat komunikasi antar proses.</li>
+</ul>
+</li>
+<li>Apa yang dimaksud perintah di bawah ini :
+echo, cat, more, sort, grep, wc, cut, uniq
+<ul>
+<li><code>echo</code> : digunakan untuk menampilkan text.</li>
+<li><code>cat</code> : perintah untuk melihat isi file.</li>
+<li><code>more</code> : digunakan untuk membuka file satu per satu.</li>
+<li><code>sort</code> : digunakan untuk mengurutkan .masukannya berdasarkan urutan nomor ASCII dari karakter.</li>
+<li><code>grep</code> : digunakan untuk menyaring masukannya dan menampilkan baris-baris yang hanya mengandung pola yang ditentukan.</li>
+<li><code>wc</code> : digunakan untuk menghitung jumlah baris, kata dan karakter dari baris-baris masukan yang diberikan kepadanya.</li>
+<li><code>cut</code> : digunakan untuk mengambil kolom tertentu dari baris-baris masukannya,</li>
+<li><code>uniq</code> : digunakan untuk menghilangkan baris-baris berurutan yang mengalami duplikasi, biasanya digabungkan dalam pipeline dengan sort.</li>
+</ul>
+</li>
+</ol>
+<h2 id="percobaan">PERCOBAAN:</h2>
+<ol>
+<li>Login sebagai user.</li>
+<li>Bukalah Console Terminal dan lakukan percobaan-percobaan di bawah ini. Perhatikan hasil setiap percobaan.</li>
+<li>Selesaikan soal-soal latihan.</li>
+</ol>
+<h2 id="percobaan-1--file-descriptor">Percobaan 1 : File descriptor</h2>
+<ol>
+<li>
+<p>Output ke layar (standar output), input dari system (kernel)</p>
+<pre><code>$ ps
+</code></pre>
+<p><img src="file:///c:\SysOp-3123500015-main\assets\week-4\1.png" alt="img"></p>
+</li>
+<li>
+<p>Output ke layar (standar output), input dari keyboard (standard input)</p>
+<pre><code> $ cat
+ hallo, apa khabar
+ hallo, apa khabar
+ exit dengan ^d
+ exit dengan ^d
+ [Ctrl-d]
+</code></pre>
+<p><img src="file:///c:\SysOp-3123500015-main\assets\week-4\2.png" alt="img"></p>
+</li>
+<li>
+<p>Input nama direktori, output tidak ada (membuat direktori baru), bila terjadi error maka tampilan error pada layar (standard error)</p>
+<pre><code>$ mkdir mydir
+$ mkdir mydir **(Terdapat pesan error)**
+</code></pre>
+<p><img src="file:///c:\SysOp-3123500015-main\assets\week-4\3.png" alt="img"></p>
+</li>
+</ol>
+<h2 id="percobaan-2--pembelokan-redirection">Percobaan 2 : Pembelokan (redirection)</h2>
+<ol>
+<li>Pembelokan standar output<pre><code> $ cat 1&gt; myfile.txt
+ Ini adalah teks yang saya simpan ke file myfile.txt
+</code></pre>
+<img src="file:///c:\SysOp-3123500015-main\assets\week-4\4.png" alt="img"></li>
+<li>Pembelokan standar input, yaitu input dibelokkan dari keyboard menjadi dari file<pre><code> $ cat 0&lt; myfile.txt
+ $ cat myfile.txt
+</code></pre>
+<img src="file:///c:\SysOp-3123500015-main\assets\week-4\5.png" alt="img"></li>
+<li>Pembelokan standar error untuk disimpan di file<pre><code> $ mkdir mydir (Terdapat pesan error)
+ $ mkdir mydir 2&gt; myerror.txt
+ $ cat myerror.txt
+</code></pre>
+<img src="file:///c:\SysOp-3123500015-main\assets\week-4\6.png" alt="img"></li>
+<li>Notasi 2&gt;&amp;1 : pembelokan standar error (2&gt;) adalah identik dengan file descriptor 1.<pre><code> $ ls filebaru (Terdapat pesan error)
+ $ ls filebaru 2&gt; out.txt
+ $ cat out.txt
+ $ ls filebaru 2&gt; out.txt 2&gt;&amp;
+ $ cat out.txt
+</code></pre>
+<img src="file:///c:\SysOp-3123500015-main\assets\week-4\7.png" alt="img"></li>
+<li>Notasi 1&gt;&amp;2 (atau &gt;&amp;2) : pembelokan standar output adalah sama dengan file descriptor 2 yaitu standar error<pre><code>$ echo “mencoba menulis file” 1&gt; baru
+$ cat filebaru 2&gt; baru 1&gt;&amp;
+ $ ls filebaru 2&gt; out.tx7
+$ cat baru
+</code></pre>
+<img src="file:///c:\SysOp-3123500015-main\assets\week-4\8.png" alt="img"></li>
+<li>Notasi &gt;&gt; (append)<pre><code class="language-****">$ echo “kata pertama” &gt; surat
+$ echo “kata kedua” &gt;&gt; surat
+$ echo “kata ketiga” &gt;&gt; surat
+ $ ls filebaru 2&gt; out.tx8
+$ cat surat
+$ echo “kata keempat” &gt; surat
+$ cat surat
+</code></pre>
+<img src="file:///c:\SysOp-3123500015-main\assets\week-4\9.png" alt="img"></li>
+<li>Notasi here document (&lt;&lt;++ .... ++) digunakan sebagai pembatas input dari keyboard. Perhatikan bahwa tanda pembatas dapat digantikan dengan tanda apa saja, namun harus sama dan tanda penutup harus diberikan pada awal baris<pre><code>$ cat &lt;&lt;++
+Hallo, apa kabar?
+Baik-baik saja?
+Ok!
+++
+$ cat &lt;&lt;%%%
+Hallo, apa kabar?
+Baik-baik saja?
+Ok!
+%%%
+</code></pre>
+<img src="file:///c:\SysOp-3123500015-main\assets\week-4\10.png" alt="img"></li>
+<li>Notasi – (input keyboard) adalah representan input dari keyboard. Artinya menampilkan file 1, kemudian menampilkan input dari keyboard dan menampilkan file 2. Perhatikan bahwa notasi “-“ berarti menyelipkan input dari keyboard</li>
+</ol>
+<pre><code>$ cat myfile.txt – surat
+</code></pre>
+<p><img src="file:///c:\SysOp-3123500015-main\assets\week-4\11.png" alt="img"></p>
+<h2 id="percobaan-3--pipa-pipeline">Percobaan 3 : Pipa (pipeline)</h2>
+<ol>
+<li>Operator pipa (|) digunakan untuk membuat eksekusi proses dengan melewati data langsung ke data lainnya.<pre><code>$ who
+$ who | sort
+$ who | sort –r
+$ who &gt; tmp
+$ sort tmp
+$ rm tmp
+$ ls –l /etc | more
+$ ls –l /etc | sort | more
+</code></pre>
+<img src="file:///c:\SysOp-3123500015-main\assets\week-4\12.png" alt="img">
+<img src="file:///c:\SysOp-3123500015-main\assets\week-4\12.1.png" alt="img">
+<img src="file:///c:\SysOp-3123500015-main\assets\week-4\12.2.png" alt="img"></li>
+<li>Untuk membelokkan standart output ke file, digunakan operator &quot;&gt;&quot;<pre><code>$ echo hello
+$ echo hello &gt; output
+$ cat output
+</code></pre>
+<img src="file:///c:\SysOp-3123500015-main\assets\week-4\13.png" alt="img"></li>
+<li>Untuk menambahkan output ke file digunakan operator &quot;&gt;&gt;&quot;<pre><code>$ echo bye &gt;&gt; output
+$ cat output
+</code></pre>
+<img src="file:///c:\SysOp-3123500015-main\assets\week-4\14.png" alt="img"></li>
+<li>Untuk membelokkan standart input digunakan operator &quot;&lt;&quot;<pre><code>$ cat &lt; output
+</code></pre>
+<img src="file:///c:\SysOp-3123500015-main\assets\week-4\15.png" alt="img"></li>
+<li>Pembelokan standart input dan standart output dapat dikombinasikan tetapi tidak boleh menggunakan nama file yang sama sebagai standart input dan output.<pre><code>$ cat &lt; output &gt; out
+$ cat out
+$ cat &lt; output &gt;&gt; out
+$ cat out
+$ cat &lt; output &gt; output
+$ cat output
+$ cat &lt; out &gt;&gt; out (Proses tidak berhenti)
+[Ctrl-c]
+$ cat out
+</code></pre>
+<img src="file:///c:\SysOp-3123500015-main\assets\week-4\16.png" alt="img"></li>
+</ol>
+<h2 id="percobaan-4--filter">Percobaan 4 : Filter</h2>
+<ol>
+<li>Pipa juga digunakan untuk mengkombinasikan utilitas sistem untuk membentuk fungsi yang lebih kompleks<pre><code> $ w –h | grep &lt;user&gt;
+ $ grep &lt;user&gt; /etc/passwd
+ $ ls /etc | wc
+ $ ls /etc | wc –l
+ $ cat &gt; kelas1.txt
+ Badu
+ Zulkifli
+ Yulizir
+ Yudi
+ Ade
+ [Ctrl-d]
+ $ cat &gt; kelas2.txt
+ Budi
+ Gama
+ Asep
+ Muchlis
+ [Ctrl-d]
+ $ cat kelas1.txt kelas2.txt | sort
+ $ cat kelas1.txt kelas2.txt &gt; kelas.txt
+ $ cat kelas.txt | sort | uniq
+</code></pre>
+<img src="file:///c:\SysOp-3123500015-main\assets\week-4\17.png" alt="img"></li>
+</ol>
+<h2 id="latihan">LATIHAN:</h2>
+<ol>
+<li>
+<p>Lihat daftar secara lengkap pada direktori aktif, belokkan tampilan standard output   ke file baru.
+<img src="file:///c:\SysOp-3123500015-main\assets\week-4\latihan1.png" alt="img"></p>
+</li>
+<li>
+<p>Lihat daftar secara lengkap pada direktori /etc/passwd, belokkan tampilan standard output ke file baru tanpa menghapus file baru sebelumnya.</p>
+<p><img src="file:///c:\SysOp-3123500015-main\assets\week-4\latihan2.png" alt="img"></p>
+</li>
+<li>
+<p>Urutkan file baru dengan cara membelokkan standard input.
+<img src="file:///c:\SysOp-3123500015-main\assets\week-4\latihan3.png" alt="img"></p>
+</li>
+<li>
+<p>Urutkan file baru dengan cara membelokkan standard input dan standard output ke file baru.urut.
+<img src="file:///c:\SysOp-3123500015-main\assets\week-4\latihan4.png" alt="img"></p>
+</li>
+<li>
+<p>Buatlah direktori latihan 2 sebanyak 2 kali dan belokkan standard error ke file rmdirerror.txt.
+<img src="file:///c:\SysOp-3123500015-main\assets\week-4\latihan5.png" alt="img"></p>
+</li>
+<li>
+<p>Urutkan kalimat berikut :</p>
+<pre><code>Jakarta
+Bandung
+Surabaya
+Padang
+Palembang
+Lampung
+</code></pre>
+<p>Dengan menggunakan notasi <strong>here document (&lt;@@@ ...@@@)</strong> . <a href="https://www.geeksforgeeks.org/how-to-use-here-document-in-bash-programming/">HINT</a>
+<img src="file:///c:\SysOp-3123500015-main\assets\week-4\latihan6.png" alt="img"></p>
+</li>
+<li>
+<p>Hitung jumlah baris, kata dan karakter dari file baru.urut dengan menggunakan filter dan tambahkan data tersebut ke file baru.
+<img src="file:///c:\SysOp-3123500015-main\assets\week-4\latihan7.png" alt="img"></p>
+</li>
+<li>
+<p>Gunakan perintah di bawah ini dan perhatikan hasilnya.</p>
+<pre><code> $ cat &gt; hello.txt
+ dog cat
+ cat duck
+ dog chicken
+ chicken duck
+ chicken cat
+ dog duck
+ [Ctrl-d]
+ $ cat hello.txt | sort | uniq
+ $ cat hello.txt | grep “dog” | grep –v “cat”
+</code></pre>
+<p><img src="file:///c:\SysOp-3123500015-main\assets\week-4\latihan8.png" alt="img"></p>
+</li>
+</ol>
+<h2 id="kesimpulan">Kesimpulan</h2>
+<p>Redirection, Pipeline, dan Perintah-perintah yang disebutkan adalah bagian integral dari sistem operasi UNIX/Linux dan digunakan untuk mengelola aliran data, mengelola file, dan melakukan operasi pada teks.</p>
+<ul>
+<li>Redirection: Redirection adalah proses mengalihkan aliran data standar masukan (stdin), standar keluaran (stdout), dan standar error (stderr) dalam UNIX/Linux. Ini memungkinkan pengguna untuk mengarahkan output dari suatu perintah ke file atau perintah lain, atau mengambil input dari file atau perintah lain. Contoh penggunaan redirection adalah &gt;, &lt;, &gt;&gt;, dan 2&gt;.</li>
+<li>Pipeline adalah mekanisme yang memungkinkan pengguna untuk mengalirkan keluaran dari satu perintah ke masukan perintah lain secara langsung, tanpa menyimpannya ke dalam file sementara. Ini memungkinkan pengguna untuk menggabungkan beberapa perintah bersama-sama untuk melakukan tugas yang kompleks. Pipeline ditandai dengan simbol |. Misalnya, command1 | command2 akan mengalirkan keluaran dari command1 ke masukan command2.</li>
+<li>Perintah-perintah:
+<ul>
+<li><code>echo</code> Menampilkan teks atau variabel ke output standar.</li>
+<li><code>cat</code> Membaca isi file dan menampilkannya di output standar.</li>
+<li><code>more</code> Menampilkan isi file satu layar pada satu waktu.</li>
+<li><code>sort</code> Mengurutkan baris-baris inputnya berdasarkan urutan ASCII.</li>
+<li><code>grep</code> Mengambil inputnya dan mencari pola yang cocok, lalu menampilkan baris yang sesuai.</li>
+<li><code>wc</code> Menghitung jumlah baris, kata, dan karakter dari inputnya.</li>
+<li><code>cut</code> Memotong kolom-kolom tertentu dari inputnya.</li>
+<li><code>uniq</code> Menghilangkan baris duplikat berturut-turut dari inputnya.</li>
+</ul>
+</li>
+</ul>
+<h2 id="laporan-resmi">LAPORAN RESMI:</h2>
+<ol>
+<li>Analisa hasil percobaan 1 sampai dengan 4, untuk setiap perintah jelaskan    tampilannya.</li>
+<li>Kerjakan latihan diatas dan analisa hasilnya</li>
+<li>Berikan kesimpulan dari praktikum ini.</li>
+</ol>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>
