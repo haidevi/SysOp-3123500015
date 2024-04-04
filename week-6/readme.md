@@ -187,7 +187,9 @@ UNIX adalah perintah ``killall``. Perintah ini akan menghentikan proses sesuai P
 
 ### LATIHAN: 
 1. Masuk ke tty2 dengan **CtrI+Alt+F2**. Ketik **ps -au** dan tekan **Enter**. Kemudian perhatikan keluaran sebagai berikut :
-      ![img](../assets/week-6/21.png)
+
+   ![img](../assets/week-6/21.png)
+   
    a. Sebutkan nama-nama proses yang bukan root
       
       * Dari keseluruhan proses hanya proses ``/bin/login -p--``
@@ -230,7 +232,7 @@ UNIX adalah perintah ``killall``. Perintah ini akan menghentikan proses sesuai P
       * PID = 6318 (bash)
       * PID = 6316 (csh)
       * PID = 6092 (bash)
-2. Cobalah format tampilan ps dengan opsi berikut dan perhatikan hasil tampilannya :
+3. Cobalah format tampilan ps dengan opsi berikut dan perhatikan hasil tampilannya :
    * -f  daftar penuh
       
       ![img](../assets/week-6/24.1.png)
@@ -273,34 +275,45 @@ UNIX adalah perintah ``killall``. Perintah ini akan menghentikan proses sesuai P
 
 2. Lakukan urutan pekerjaan berikut :
 
-   a. Gunakan perintah ``find`` ke seluruh direktory pada sistem, belokkan output sehingga daftar direktori dialihkan ke file directories. txt dan daftar pesan error dialihkan ke file errors.txt
+   a. Gunakan perintah ``find`` ke seluruh direktory pada sistem, belokkan output sehingga daftar direktori dialihkan ke file directories. txt dan daftar 
+      pesan error dialihkan ke file errors.txt
       ![img](../assets/week-6/25.png)
    
    b. Gunakan perintah ``sleep 5``. Apa yang terjadi dengan perintah ini ?
+   
       ![img](../assets/week-6/26.png)
    
    c. Jalankan perintah pada background menggunakan &
+   
       ![img](../assets/week-6/27.png)
    
-   d. Jalankan ``sleep 15`` pada foreground, hentikan sementara dengan Ctrl-Z dan kemudian letakkan pada background dengan ``bg``. Ketikkan ``jobs``. Ketikkan ``ps``. Kembalikan job ke foreground dengan perintah ``fg``.
+   d. Jalankan ``sleep 15`` pada foreground, hentikan sementara dengan Ctrl-Z dan kemudian letakkan pada background dengan ``bg``. Ketikkan ``jobs``. 
+      Ketikkan ``ps``. Kembalikan job ke foreground dengan perintah ``fg``.
+
       ![img](../assets/week-6/28.png)
   
    e. Jalankan ``sleep 15`` pada background menggunakan & dan kemudian gunakan perintah ``kill`` untuk menghentikan proses diikuti job number.
+
       ![img](../assets/week-6/29.png)
    
-   f. Jalankan ``sleep 15`` pada background menggunakan & dan kemudian gunakan ``kill`` untuk menghentikan sementara proses. Gunakan bg untuk melanjutkan menjalankan proses.
+   f. Jalankan ``sleep 15`` pada background menggunakan & dan kemudian gunakan ``kill`` untuk menghentikan sementara proses. Gunakan bg untuk melanjutkan 
+       menjalankan proses.
+
       ![img](../assets/week-6/30.png)
    
    g. Jalankan ``sleep 60`` pada background 5 kali dan terminasi semua pada dengan menggunakan perintah ``killall``.
+
       ![img](../assets/week-6/31.png)
    
    h. Gunakan perintah ``ps``, ``w`` dan ``top`` untuk menunjukkan semua proses yang sedang dieksekusi.
+
       ![img](../assets/week-6/32.1.png)
 
       ![img](../assets/week-6/32.2.png)
    
    i. Gunakan perintah ``ps -aeH`` untuk menampilkan hierarki proses. Carilah init proses. Apakah Anda bisa identifikasi sistem daemon yang penting ?
       Dapatkan Anda identifikasi shell dan subproses ?
+
       ![img](../assets/week-6/33.1.png)
 
       ![img](../assets/week-6/33.2.png)
@@ -308,12 +321,14 @@ UNIX adalah perintah ``killall``. Perintah ini akan menghentikan proses sesuai P
       ![img](../assets/week-6/33.3.png)
    
    j. Kombinasikan ``ps -fae`` dan ``grep``, apa yang Anda lihat ?
+
       ![img](../assets/week-6/34.png)
 
       Perintah ps -fae : untuk menampilkan semua proses yang sedangberjalan pada mesin.
       Penggabungan dengan grep, meanampilkan proses yang dicari dengan menggunakan grep.
    
    k. Jalankan proses ``sleep 300`` pada background. Log off komputer dan log in kembali. Lihat daftar semua proses yang berjalan. Apa yang terjadi pada proses sleep ?
+
       ![img](../assets/week-6/35.1.png)
 
       ![img](../assets/week-6/35.2.png)
