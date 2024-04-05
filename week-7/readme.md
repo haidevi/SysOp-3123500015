@@ -82,7 +82,8 @@ Manual: `$ man 3 exec`
 
 * Deskripsikan dan visualisasikan pohon proses hasil eksekusi dari kode program ``fork01.c``, ``fork02.c``, ``fork03.c``, ``fork04.c``, ``fork05.c``dan ``fork06.c``.
 
-  1. ``fork01.c``
+
+1. ``fork01.c``
 
 ![img](../assets/week-7/1.png)
 
