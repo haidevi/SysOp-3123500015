@@ -89,17 +89,17 @@ Manual: `$ man 3 exec`
  ```
        int main() {
   for(int i = 0;i < 3; i++){
-    PID : 36288, PPID : 35057, uid : 1000
+    PID : 4010, PPID : 3888, uid : 1000
               [Main Process]
                     |
                 sleep(3)
                     |
-    PID : 36288, PPID : 35057, uid : 1000
+    PID : 4010, PPID : 3888, uid : 1000
               [Main Process]
                     |
                 sleep(3)
                     |
-    PID : 36288, PPID : 35057, uid : 1000
+    PID : 4010, PPID : 3888, uid : 1000
               [Main Process]
                     |
                 sleep(3)
@@ -120,7 +120,7 @@ Output dari program menunjukkan bahwa proses tersebut (disebut proses "I am proc
                           /       \
                         /           \
   while(1){           /               \
-          PID: 36476, PPID: -       PID: 36477, PPID: 36476
+          PID: 4016, PPID: -       PID: 4016, PPID: 4016
           [Parent Process]          [Child Process]
                       \               /
                         \           /
@@ -147,7 +147,7 @@ int main() {
                           /       \
   x=5;                  /           \
   while(x<=5){        /               \
-          PID: 36325, PPID: -      PID: 36326, PPID: 36325
+          PID: 4047, PPID: -      PID: 4048, PPID: 4047
           [Parent Process]          [Child Process]
                       \               /
                         \           /
@@ -174,11 +174,11 @@ int main() {
                                  /     \
                                 /       \
                                /         \
-                    PID: 36382, PPID: -   \
+                    PID: 4054, PPID: -   \
                     [Parent Process]       \
                             |               \
                             |                \
-                            |        PID: 36383, PPID: 36382
+                            |        PID: 4055, PPID: 34054
                           wait         [Child Process]
                             \                /
                               \            /
@@ -200,11 +200,11 @@ int main() {
                                     +
                                   /   \
                                 /       \
-                PID : 36394 PPID : -      \
+                PID : 4061 PPID : -      \
                  [Parent Process]           \
                         |                     \
                         |                       \
-                        |               PID : 36395 PPID : 36394
+                        |               PID : 4062 PPID : 4061
                       wait                    execl(/bin/ls)
                         \                     [Child Process]
                           \                       /
@@ -229,10 +229,10 @@ int main() {
                                 +
                               /   \
                             /      \
-              PID: 36440, PPID: -   \
+              PID: 4069, PPID: -   \
               [Parent Process]       \
                       |               \
-                      |          PID: 36441, PPID: 36440
+                      |          PID: 4070, PPID: 4069
                     wait          [Child Process]
                       \               /
                         \           /
