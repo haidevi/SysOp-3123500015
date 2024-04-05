@@ -21,7 +21,7 @@ Setiap program atau bagian dari program yang sedang dieksekusi oleh CPU disebut 
 Untuk melihat seluruh proses yang sedang berjalan gunakan perintah `$ ps -e` .
 Bisa juga menggunakan perintah `$pstree | more` untuk melihat secara detil proses yang sefan berjalan dengan format **tree**.
 
-Setiap proses akan memilik **PID**  Process ID). Apabila dibutuhkan Sebuah proses bisa memiliki proses anakan. Dalam hubungan tersebut proses dapat diibaratkan seperti orang tua (_parent_) dengan anak (_child_) yang turun temurun.
+Setiap proses akan memilik **PID**  (Process ID). Apabila dibutuhkan Sebuah proses bisa memiliki proses anakan. Dalam hubungan tersebut proses dapat diibaratkan seperti orang tua (_parent_) dengan anak (_child_) yang turun temurun.
 - Setiap proses memiliki parent dan child.
 - Setiap proses memiliki ID (_pid_) dan parent ID (_ppid_), kecuali proses `init` atau `systemd`.
 - _ppid_ dari sebuah proses adalah ID dari parent proses tersebut. 
@@ -250,6 +250,6 @@ Buatlah program perkalian 2 matriks [4 x 4] dalam bahasa C yang memanfaatkan ``f
 
 ![img](../assets/week-7/mtrx.png)
 
- ![img](../assets/week-7/mtrx2.png)
+![img](../assets/week-7/mtrx2.png)
 
- 
+Program dengan bahasa C diatas melakukan perkalian matriks dengan skalar menggunakan child process dan parent process dengan menggunakan fungsi `fork()`. Program menginisialisasi sebuah matriks dengan ukuran `ROWS`x`COLS` yang diisi dengan nilai-nilai yang merupakan hasil dari perkalian baris dan kolom matriks. Program melakukan proses fork untuk menciptakan child process. Jika child process berhasil dibuat (`pid == 0`), maka child process akan mengalikan setiap elemen matriks dengan skalar yang telah ditentukan, dan kemudian mencetak matriks hasil perkalian. Jika parent process yang menjalankan program (`pid > 0`), maka parent process akan menunggu child process selesai menggunakan fungsi `wait(NULL)`, dan kemudian mencetak pesan bahwa parent process telah selesai. Jika proses fork gagal (`pid < 0`), program akan mencetak pesan kesalahan.
