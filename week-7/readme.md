@@ -76,7 +76,11 @@ Manual: `$ man 3 exec`
 
      ![img](../assets/week-7/fork.jpeg)
 
-     ![img](../assets/week-7/tgs1.png)
+     ![img](../assets/week-7/pc1.png)
+
+     ![img](../assets/week-7/pc2.png)
+
+     Program diatas merupakan program C yang mengaplikasikan proses fork().  Fungsi main dimulai dengan mencetak ID proses (PID) dari program utama, ID child ( belum diinisialisasi), dan ID parent (ID dari proses saat ini). Kemudian memanggil fork(), yang membuat proses child baru. Pada proses parent, fork() mengembalikan PID child, sementara pada proses child, ia mengembalikan 0. Dengan demikian, program dapat membedakan antara proses parent dan child. Jika proses tersebut adalah parent (yaitu, child_id bukan 0), maka proses tersebut akan mencetak informasi yang sama lagi, tetapi dengan ID child yang sebenarnya.
 
 * Akses dan clonning repo : https://github.com/ferryastika/operatingsystem.git
 
@@ -86,6 +90,8 @@ Manual: `$ man 3 exec`
 1. ``fork01.c``
 
 ![img](../assets/week-7/1.png)
+
+![img](../assets/week-7/1j.png)
 
  ```
        int main() {
@@ -112,6 +118,8 @@ Output dari program menunjukkan bahwa proses tersebut (disebut proses "I am proc
   2. ``fork02.c``
 
  ![img](../assets/week-7/2.png)
+
+ ![img](../assets/week-7/2j.png)
 
 ```
  int main() {
@@ -140,6 +148,8 @@ Dari output program, terlihat bahwa child process memiliki PID yang berbeda dari
 
 ![img](../assets/week-7/3.png)
 
+![img](../assets/week-7/3j.png)
+
 ```
 int main() {
       fork();         > Child Process created <
@@ -165,7 +175,11 @@ Output program menunjukkan bahwa terdapat dua proses yang berjalan: parent proce
   
   4. ``fork04.c``
 
-![img](../assets/week-7/4.png)
+![img](../assets/week-7/4.1.png)
+
+![img](../assets/week-7/4.2.png)
+
+![img](../assets/week-7/4j.png)
 
 ```
 int main() {
@@ -179,7 +193,7 @@ int main() {
                     [Parent Process]       \
                             |               \
                             |                \
-                            |        PID: 4055, PPID: 34054
+                            |        PID: 4055, PPID: 4054
                           wait         [Child Process]
                             \                /
                               \            /
@@ -194,6 +208,10 @@ Output dari program menunjukkan bahwa parent process pertama kali berjalan, menc
   5. ``fork05.c``
 
 ![img](../assets/week-7/5.png)
+
+![img](../assets/week-7/5.1.png)
+
+![img](../assets/week-7/5j.png)
 
 ```
 int main() {
@@ -224,6 +242,10 @@ Output program menunjukkan bahwa parent process mencetak PID-nya sendiri dan PID
 
 ![img](../assets/week-7/6.png)
 
+![img](../assets/week-7/6.1.png)
+
+![img](../assets/week-7/6j.png)
+
 ```
 int main() {
   fork();           > Child process created <
@@ -249,8 +271,10 @@ Output program menunjukkan bahwa parent process mencetak PID-nya sendiri dan PID
 
 Buatlah program perkalian 2 matriks [4 x 4] dalam bahasa C yang memanfaatkan ``fork()``.
 
-![img](../assets/week-7/mtrx.png)
+![img](../assets/week-7/matrix1.png)
 
-![img](../assets/week-7/mtrx2.png)
+![img](../assets/week-7/matrix2.png)
 
-Program dengan bahasa C diatas melakukan perkalian matriks dengan skalar menggunakan child process dan parent process dengan menggunakan fungsi `fork()`. Program menginisialisasi sebuah matriks dengan ukuran `ROWS`x`COLS` yang diisi dengan nilai-nilai yang merupakan hasil dari perkalian baris dan kolom matriks. Program melakukan proses fork untuk menciptakan child process. Jika child process berhasil dibuat (`pid == 0`), maka child process akan mengalikan setiap elemen matriks dengan skalar yang telah ditentukan, dan kemudian mencetak matriks hasil perkalian. Jika parent process yang menjalankan program (`pid > 0`), maka parent process akan menunggu child process selesai menggunakan fungsi `wait(NULL)`, dan kemudian mencetak pesan bahwa parent process telah selesai. Jika proses fork gagal (`pid < 0`), program akan mencetak pesan kesalahan.
+![img](../assets/week-7/matrix3.png)
+
+Program diatas merupakan bentuk penggunaan proses fork dalam bahasa pemrograman C untuk melakukan perkalian matriks. Dua matriks yaitu `matrix1` dan `matrix2` yang masing-masing berukuran 4x4 didefinisikan. Di dalam fungsi `main`, terdapat pemanggilan `fork()` yang membuat duplikat proses saat ini. Hasil dari pemanggilan  disimpan dalam variabel `pid`. Jika `pid` bukan nol,  berarti proses saat ini adalah proses induk (parent), sedangkan jika `pid` adalah nol, itu berarti proses saat ini adalah proses anak (child). Jika `pid` tidak nol, proses induk menunggu proses anak selesai dengan memanggil `wait(NULL)`. Setelah proses anak selesai, proses induk melakukan perkalian matriks menggunakan fungsi `multiply` dan mencetak hasilnya bersama dengan informasi tentang proses. Jika `pid` adalah nol, itu berarti proses ini adalah proses anak. Proses anak mencetak informasi tentang dirinya sendiri dan melakukan perkalian matriks juga.
