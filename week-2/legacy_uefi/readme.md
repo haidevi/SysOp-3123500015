@@ -24,14 +24,17 @@
 
 # Perbedaan LEGACY dan UEFI
 
+### LEGACY dan UEFI
+
+BIOS dab UEFI adalah sebuah firmware komputer yang tertanam di mainboard yang fungsinya untuk menginisialisasi hardware saat komputer dinyalakan sebelum masuk ke sistem operasi.  Firmware adalah Aplikasi kecil yang tertanam pada chip ROM dan bekerja pertama saat komputer dinyalakan sebagai jembatan antara hardware dengan sistem operasi dan dikenal  dengan sebutan BIOS atau UEFI. Sebuah aplikasi kecil (firmware)yang tertanan dalam chip ROM (embeded) bekerja secara mandiri mengecek semua modul yang terpasang pada sistem komputer,mulai dari CPU,RAM,GPU,HDD,SSD dan modul lain nya sebelum akhirnya masuk ke sistem operasi.
+
 | # | LEGACY | UEFI |
 | --- | --- | --- |
 | Deskripsi | Legacy Bios, alat yang membantu firmware Bios dalam memproses boot yang berfungsi untuk menyimpan daftar penyimpanan yang bisa untuk di boot seperti Floopy Disk Drives, Optical Disk Drive, Hard Disk Drive, dll. | UEFI ( Unified Extensible Firmware Interface), teknologi terbaru yang dibuat untuk penyempurnaan dari BIOS yang lama menjadi BIOS yang memiliki fungsi yang lebih optimal. |
 | Skema Partisi | Menggunakan MBR (Master Boot Record), merupakan sistem partisi versi lawas.  | Menggunakan GPT (Guid Partition Table), merupakan sistem partisi yang mendukung hardware canggih di jaman modern saat ini. |
 | Partisi | Mampu menampung lebih dari 2TB, dapat membuat lebih dari 128 partisi utama, bisa menyimpan lebih dari satu bootloader. | 1.	MBR legacy hanya mampu menampung partisi sekitar 2TB, hanya bisa membuat 4 partisi utama, hanya mampu mennyimpan 1 bootloader
 | User Interface | pengguna hanya dapat menggunakan keyboard. | pengguna tidak hanya menggunakan keyboard, tetapi juga dapat menggunakan mouse. |
-| Language | Ditulis dalam Bahasa Low-level yang bergantung pada arsitektur prosesor spesifik | ditulis dalam  Bahasa pemrograman High-Level “C” yang memungkinkan pengguna untuk memeperbarui atau memperbaiki bug dengan mudah. |
-| User friendly  | hanya mampu dijalankan pada mode 16-bit. | lebih ramah pengguna karena mampu dijalankan pada mode 32-bit atau 64-bit.
+| User friendly  | hanya mampu dijalankan pada mode 16-bit. Apabila hardware yang terpasang banyak maka akan lambat. | lebih ramah pengguna karena mampu dijalankan pada mode 32-bit atau 64-bit. Oleh karena itu, proses booting jauh lebih cepat.
 | Security | tidak menyediakan fitur keamanan. | Menyediakan fitur keamanan yang mencegah malware menginfeksi sistem saat sistem dinyalakan.
 | Booting Storage | Mendukung 2.2 Terabyte ukuran drive. | Mendukung hingga 9 Zetabyte ukuran drive.
 | Booting time | Waktu booting lebih lama. | Waktu booting UEFI lebih cepat.

@@ -843,15 +843,15 @@ Fungsi berisi nama fungsi yang diapit {}.
 
 Itu dapat dideklarasikan dengan dua cara, yaitu
 
-![App Screenshot](assets/img/functions/1.png)
+![App Screenshot](assets/img/Functions/1.png)
 
 **Cara meneruskan parameter ke suatu fungsi**
 
-![App Screenshot](assets/img/functions/2.png)
+![App Screenshot](assets/img/Functions/2.png)
 
 Parameter dapat diakses menggunakan $1 $2 $3.. $n
 
-![App Screenshot](assets/img/functions/3.png)
+![App Screenshot](assets/img/Functions/3.png)
 
 ## Bash - Append String
 
