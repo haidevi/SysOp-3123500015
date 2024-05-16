@@ -1,5 +1,5 @@
 <div align="center">
-  <h1 style="text-align: center;font-weight: bold">Praktikum 9<br>Praktek Sistem Operasi</h1>
+  <h1 style="text-align: center;font-weight: bold">Praktikum 10<br>Praktek Sistem Operasi</h1>
   <h4 style="text-align: center;">Dosen Pengampu : Dr. Ferry Astika Saputra, S.T., M.Sc.</h4>
 </div>
 <br />
@@ -49,7 +49,22 @@ d.	Scalability
 
 Ketika jumlah beban dalam komputasi proses meningkat dalam sistem, maka diperlukan tenaga komputasi yang lebih dalam sistem. Bila sistem dan program mendukung multithreading, maka kita dapat menambahkan jumlah core dalam processor kita  atau jumlah processor dalam sistem. Hal ini memperbolehkan untuk membagi thread-thread proses kepada setiap core secara paralel. Namun jika sistem hanya memliki satu thread proses, maka proses tersebut hanya akan dapat di eksekusi oleh satu core, tidak peduli jumlah core yang tersedia dalam sistem atau processor sistem memerlukan menambahkan frekuensi core yang dimana lebih sulit di buat dan lebih banyak menggunakan tenaga listrik.
 
-##Multithreading models 
+## Types of Parallelism
+
+Secara umum, ada dua jenis paralelisme: 
+
+1. Parallel Data
+
+    Paralelisme data berfokus pada pendistribusian subset dari data yang sama di beberapa inti komputasi dan melakukan operasi yang sama pada setiap inti. 
+2. Parallel Task 
+
+    Paralelisme tugas melibatkan pendistribusian bukan data, melainkan tugas (thread) di beberapa inti komputasi.
+
+![img](../assets/week-10/dt.png)
+
+
+
+## Multithreading models 
 
 1.	Many-to-One Model
 
@@ -73,6 +88,38 @@ note : Memultiplekskan adalah tindakan menggabungkan beberapa sinyal atau data k
 
 ## Thread Libraries 
 
+Sebuah thread library menyediakan API bagi programmer untuk membuat dan mengelola thread. Ada dua cara utama untuk mengimplementasikan thread library. Pendekatan pertama adalah menyediakan library sepenuhnya di ruang pengguna tanpa dukungan kernel. Semua kode dan struktur data untuk library ada di ruang pengguna. Ini berarti bahwa memanggil fungsi di pustaka menghasilkan panggilan fungsi lokal di ruang pengguna dan bukan panggilan sistem.  
+
+Pendekatan kedua adalah mengimplementasikan library tingkat kernel yang didukung langsung oleh sistem operasi. Dalam hal ini, kode dan struktur data untuk library ada di ruang kernel. Memanggil fungsi dalam API untuk library biasanya menghasilkan panggilan sistem ke kernel.
+
+Tiga thread library utama digunakan saat ini: POSIX Pthreads, Windows, dan Java. 
+ 1. Pthreads, ekstensi threads dari standar POSIX, dapat disediakan sebagai library tingkat pengguna atau tingkat kernel.Pthreads mengacu pada standar POSIX (IEEE 1003.1c) yang mendefinisikan API untuk pembuatan dan sinkronisasi thread. Ini adalah spesifikasi untuk perilaku thread, bukan implementasi. Perancang sistem operasi dapat menerapkan spesifikasi dengan cara apa pun yang mereka inginkan. Banyak sistem mengimplementasikan spesifikasi Pthreads; sebagian besar adalah sistem tipe UNIX, termasuk Linux dan macOS. 
+    
+ 2.  Windows Thread adalah library tingkat kernel yang tersedia di sistem Windows. Teknik untuk membuat thread menggunakan thread library Windows mirip dengan teknik Pthreads dalam beberapa cara. Perhatikan bahwa jendela harus disertakan. h header saat menggunakan Windows API.
+
+ 3. Java thread API memungkinkan thread dibuat dan dikelola langsung dalam program Java. Namun, karena dalam kebanyakan kasus JVM berjalan di atas sistem operasi host, Java thread API umumnya diimplementasikan menggunakan thread library yang tersedia di sistem host. Ini berarti bahwa pada sistem Windows, thread di Java biasanya diimplementasikan menggunakan Windows API; Sistem UNIX, Linux, dan macOS biasanya menggunakan Pthreads.
+
+## Implicit Threading
+
+1.	Thread Pools
+    
+    Thread yang tidak terbatas dapat menghabiskan sumber daya sistem, seperti waktu CPU atau memori. Salah satu solusi untuk masalah ini adalah dengan menggunakan thread pool.
+
+2.	Fork Join
+    
+    Metode ini, thread induk utama membuat (fork) satu atau lebih thread anak dan kemudian menunggu anak-anak untuk mengakhiri dan bergabung dengannya, pada titik mana ia dapat mengambil dan menggabungkan hasilnya. 
+
+3.	OpenMp
+    
+    OpenMP adalah seperangkat arahan kompiler serta API untuk program yang ditulis dalam C, C ++, atau FORTRAN yang menyediakan dukungan untuk pemrograman paralel di lingkungan memori bersama. OpenMP mengidentifikasi wilayah paralel sebagai blok kode yang dapat berjalan secara paralel. 
+
+4.	Grand Central Dispatch
+    
+    Grand Central Dispatch (GCD) adalah teknologi yang dikembangkan oleh Apple untuk sistem operasi macOS dan iOS-nya. Ini adalah kombinasi dari pustaka run-time, API, dan ekstensi bahasa yang memungkinkan pengembang mengidentifikasi bagian kode {tugas) untuk dijalankan secara paralel. Seperti OpenMP, GCD mengelola sebagian besar detail threading.
+
+5.	Intel Thread Building Blocks 
+    
+    Intel threading building block (TBB) adalah pustaka templat yang mendukung desain¬ing aplikasi paralel di C++. Karena ini adalah library, tidak memerlukan kompiler khusus atau dukungan bahasa. Pengembang menentukan tugas yang dapat berjalan secara paralel, dan penjadwal tugas TBB memetakan tugas ini ke thread yang mendasarinya. 
 
 # Q & A 
 
@@ -98,4 +145,5 @@ note : Memultiplekskan adalah tindakan menggabungkan beberapa sinyal atau data k
     Pendekatan lain melibatkan semaphore. Semaphore mempertahankan seperangkat izin; Sebuah thread dapat memperoleh izin (jika tersedia) atau melepaskannya kembali ke semaphore. Jika izin tidak tersedia, utas akan diblokir sampai izin. Dengan mengontrol jumlah izin awal dan distribusinya di antara utas, kita dapat menentukan perintah eksekusi.
     Terakhir, kita bisa menggunakan kunci. Kunci hanya mengizinkan satu utas pada satu waktu untuk mengakses sumber daya bersama. Dengan menempatkan kunci secara strategis, kita dapat memastikan bahwa bagian kode tertentu dijalankan oleh utas tertentu dalam urutan tertentu.
 
-#Referensi
+# Referensi
+Operating System Concept 10th Edition by A. Silberschatz, P. Bear Galvin, G. Gage (ch. 3 and 4)
