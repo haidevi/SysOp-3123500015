@@ -58,7 +58,7 @@ Secara umum, ada dua jenis paralelisme:
     Paralelisme data berfokus pada pendistribusian subset dari data yang sama di beberapa inti komputasi dan melakukan operasi yang sama pada setiap inti. 
 2. Parallel Task 
 
-    Paralelisme tugas melibatkan pendistribusian bukan data, melainkan tugas (thread) di beberapa inti komputasi.
+    Paralelisme tugas melibatkan pendistribusian bukan data, melainkan tugas (thread) di beberapa inti komputasi. Setiap tugas menjalankan operasi yang unik.
 
 ![img](../assets/week-10/dt.png)
 
